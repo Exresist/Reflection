@@ -72,7 +72,7 @@ namespace Lab2_Paint
         private void OnPluginClick(object sender, EventArgs args)
         {
             IPlugin plugin = plugins[((ToolStripMenuItem)sender).Text];
-            plugin.Transform((Bitmap)((ChildForm)ActiveMdiChild).Snapshot();
+            plugin.Transform((Bitmap)((ChildForm)ActiveMdiChild).Snapshot);
             ((ChildForm)ActiveMdiChild).drawPanel.Refresh();
         }
         private void ShowNewForm(object sender, EventArgs e) //Создание нового файла
@@ -281,7 +281,15 @@ namespace Lab2_Paint
 
         private void фильтрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Dll файл (*.dll)|*.dll";
 
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                ChildForm frmChild = new ChildForm(dlg.FileName);
+                frmChild.MdiParent = this;
+                frmChild.Show();
+            }
         }
     }
 }

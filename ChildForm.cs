@@ -55,6 +55,15 @@ namespace Lab2_Paint
             g.Save();
         }
 
+        public ChildForm(String FileName)
+        {
+            InitializeComponent();
+            TempDraw = new Bitmap(FileName);
+            Path = FileName;
+            Graphics g = Graphics.FromImage(TempDraw);
+            
+        }
+
         public void SetTool(Tool tool) => curTool = tool; //Выбор инструмента
 
         public void SetColor(Color color) => myPen.Color = color; //Выбор цвета
